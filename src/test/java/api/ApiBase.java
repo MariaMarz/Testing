@@ -10,23 +10,23 @@ import org.apache.http.client.protocol.ResponseContentEncoding;
 public class ApiBase {
     final String BASE_URI = "http://phonebook.telran-edu.de:8080/";
     final String API_KEY = "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6InRlc3RAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImV4cCI6MjEwNjk3ODI5Nn0.GM1wsoRV2QoAsD6wKmIk7N49DDpuCejK4BC9H9YItJvesH5vft8HO2uqTPnGQJwJ5oXKS2OILqP1yoanMnIMkA";
-RequestSpecification spec = new RequestSpecBuilder()
-        .setBaseUri(BASE_URI)
-        .setContentType(ContentType.JSON)
-        .addHeader("Access-Token", API_KEY)
-        .build();
+    RequestSpecification spec = new RequestSpecBuilder()
+            .setBaseUri(BASE_URI)
+            .setContentType(ContentType.JSON)
+            .addHeader("Access-Token", API_KEY)
+            .build();
 
-protected Response getRequest(String endPoint, int responseCode){
-   Response response = RestAssured.given()
-           .spec(spec)
-           .when()
-           .log().all()
-           .get(endPoint)
-           .then().log().all()
-           .extract().response();
-   response.then().assertThat().statusCode(responseCode);
-   return response;
-}
+    protected Response getRequest(String endPoint, int responseCode){
+        Response response = RestAssured.given()
+                .spec(spec)
+                .when()
+                .log().all()
+                .get(endPoint)
+                .then().log().all()
+                .extract().response();
+        response.then().assertThat().statusCode(responseCode);
+        return response;
+    }
     protected Response getRequestWithParam(String endPoint, int responseCode, String paramName, int value){
         Response response = RestAssured.given()
                 .spec(spec)

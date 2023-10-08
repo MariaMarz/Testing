@@ -1,3 +1,4 @@
+
 package e2e.tests;
 
 import e2e.dialogs.AddContactDialog;
@@ -68,6 +69,6 @@ public class AddPhoneTest extends BaseTest {
 
 
 
-    }
+}
 
 
